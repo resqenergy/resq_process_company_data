@@ -79,11 +79,6 @@ cluster_keywords = {
         "kinderbetreuung"
     ],
 
-    "Supermarkt": [
-        "supermarkt", "lebensmittel",
-        "bäckerei", "fleischerei"
-    ],
-
     "Einkaufszentrum": [
         "einkaufszentrum"
     ],
@@ -99,6 +94,11 @@ cluster_keywords = {
 
     "Kantine": [
         "kantine"
+    ],
+
+    "Supermarkt": [
+        "supermarkt", "lebensmittel",
+        "bäckerei", "fleischerei"
     ],
 
     "Fitnesscenter": [
@@ -204,7 +204,12 @@ df["Cluster"] = df["Branchenzweig_norm"].apply(assign_cluster)
 
 # Händisch Einträge modifizieren
 df.loc[df["Name"] == "Hochschulsport Adlershof", "Cluster"] = "Sporthalle"
+df.loc[df["Name"] == "Bezirksamt Treptow-Köpenick Abteilung Bürgerdienste, Bildung und Sport", "Cluster"] = "Sporthalle"
+df.loc[df["Name"] == "Adlershofer Fahrradwelt", "Cluster"] = "Einzelhandel"
+df.loc[df["Name"] == "Regattahandel Silke Zok", "Cluster"] = "Einzelhandel"
 df.loc[df["Name"] == "Alternate Photonics GmbH", "Cluster"] = "Produktion"
+df.loc[df["Name"] == "Mensa Oase (Studentenwerk Berlin)", "Cluster"] = "Kantine"
+df.loc[df["Name"] == "Kaufland", "Cluster"] = "Einkaufszentrum"
 
 # Hilfsspalte optional löschen
 df.drop(columns=["Branchenzweig_norm"], inplace=True)

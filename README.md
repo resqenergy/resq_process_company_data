@@ -16,5 +16,5 @@ Find raw data here: `https://rlinstitutde.sharepoint.com/:f:/s/427_ResQEnergy-42
 
 To skip step 1 and 2
 ====================
-Step 1 and 2 take a lot of time. You can start right away with steps 3. to 5.
+Step 1 and 2 take a lot of time. You can start right away with steps 3. to 6.
 To do this use data `adlershof_companies.csv` and `adlershof_companies_geodata.csv` from here: `https://rlinstitutde.sharepoint.com/:f:/s/427_ResQEnergy-427_internal_Team/IgCTT3B0WA2pRIoc4zZY0s-SASHBtR4BINgFFCASqVY0xcE?e=0rnqKF`

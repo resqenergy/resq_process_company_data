@@ -140,7 +140,6 @@ mapping = {
 "Parkhaus": "Parkhaus",
 "Parkhaus WISTA": "Parkhaus",
 "Pylon Porsche": "Einzelhandel",
-"Schornstein": "Lagerhalle", # TODO: rausnehmen, da kein Energiebedarf
 "Speichergebäude": "Lagerhalle",
 "Sprinkleranlage": "Parkhaus",  # Parkhaus, da allein vergleichsweise geringer Strombedarf
 "Tank": "Lagerhalle",
@@ -149,7 +148,6 @@ mapping = {
 "Trafohäuschen": "Rechenzentrum",
 "Umformerstation": "Rechenzentrum",
 "Umspannwerk": "Rechenzentrum",
-"Ungenutztes Gebäude": "Lagerhalle",
 "Verwaltungsgebäude": "Büro",
 "Wasserturm": "Lagerhalle",
 "Werkstatt": "Produktion",
@@ -209,6 +207,26 @@ def process_remaining_buildings(path, companies_df, result_df):
 
     id_indices = bd_without_companies[
         bd_without_companies["ID"] == "6.9"
+        ].index
+
+    bd_without_companies = bd_without_companies.drop(index=id_indices)
+
+    # --------------------------------------------------
+    # Schornstein entfernen
+    # --------------------------------------------------
+
+    id_indices = bd_without_companies[
+        bd_without_companies["Geb_teil"] == "Schornstein"
+        ].index
+
+    bd_without_companies = bd_without_companies.drop(index=id_indices)
+
+    # --------------------------------------------------
+    # Ungenutztes Gebäude entfernen
+    # --------------------------------------------------
+
+    id_indices = bd_without_companies[
+        bd_without_companies["Geb_teil"] == "Ungenutztes Gebäude"
         ].index
 
     bd_without_companies = bd_without_companies.drop(index=id_indices)

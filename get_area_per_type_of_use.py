@@ -98,8 +98,8 @@ def compute_cluster_result(df):
     result = (
         df.groupby("Cluster", as_index=False)
         .agg(
-            Nutzfläche_m2=("Geschossfl", "sum"),
-            Nutzeinheiten=("Nr.", "count")
+            Nutzfläche_m2_statusquo=("Geschossfl", "sum"),
+            Nutzeinheiten_statusquo=("Nr.", "count")
         )
     )
 
@@ -242,8 +242,8 @@ def process_remaining_buildings(path, companies_df, result_df):
     extra = (
         bd.groupby("Cluster", as_index=False)
         .agg(
-            Nutzfläche_m2=("Geschossfl", "sum"),
-            Nutzeinheiten=("Geb_teil", "count")
+            Nutzfläche_m2_statusquo=("Geschossfl", "sum"),
+            Nutzeinheiten_statusquo=("Geb_teil", "count")
         )
     )
 
@@ -277,10 +277,10 @@ def redistribute_remaining(bd_without_companies, result):
     total_area_remaining = bd_unmapped["Geschossfl"].sum()
     total_units_remaining = len(bd_unmapped)
 
-    shares = result["Nutzfläche_m2"] / result["Nutzfläche_m2"].sum()
+    shares = result["Nutzfläche_m2_statusquo"] / result["Nutzfläche_m2_statusquo"].sum()
 
-    result["Nutzfläche_m2"] += shares * total_area_remaining
-    result["Nutzeinheiten"] += (shares * total_units_remaining).astype(int)
+    result["Nutzfläche_m2_statusquo"] += shares * total_area_remaining
+    result["Nutzeinheiten_statusquo"] += (shares * total_units_remaining).astype(int)
 
     return result
 
